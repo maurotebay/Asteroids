@@ -13,6 +13,8 @@ var lastPress = null;
 var pressing = [];          //Keys pressed array
 
 var player = null;
+var asteroids = [];
+var score = 0;
 
 var radians = null;
 
@@ -25,4 +27,4 @@ var currentScene = 0;
 var spritesheet = new Image();
 var background = new Image();           //Spriteshits and their respective sources
 spritesheet.src = 'assets/asteroids.png';
-background.src = 'assets/background2.jpg';
+background.src = 'assets/background.jpg';

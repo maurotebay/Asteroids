@@ -6,7 +6,7 @@ function init() {
 
     ctx = canvas.getContext('2d');
 
-    player = new Circle(canvas.width/2, canvas.height/2, 7.5, true);
+    player = new Circle(canvas.width/2, canvas.height/2, canvas.width/150, true);
 
     run();
     repaint();
