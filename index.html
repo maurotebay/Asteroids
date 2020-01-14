@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!--[if lte IE 8]><meta http-equiv="X-UA-Compatible" content="chrome=1" /><![endif]-->
-        <title>Asteroids</title>
-    </head>
-    <body>
-        <h1>Asteroids</h1>
-        <p><canvas id="canvas" width="300" height="150" style="background:#999;">
-        Canvas not supported by your browser.
-        </canvas></p>
-        <script type="application/javascript" src="scripts/variables.js"></script>
-        <script type="application/javascript" src="scripts/gameAct.js"></script>
 
-        <script type="application/javascript" src="scripts/run&repaint.js"></script>
-        <script type="application/javascript" src="scripts/init.js"></script>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--[if lte IE 8]><meta http-equiv="X-UA-Compatible" content="chrome=1" /><![endif]-->
+    <link rel="stylesheet" text="text/css" href="./styles/style.css">
+    <title>Asteroids</title>
+</head>
 
-        <script type="application/javascript" src="scripts/events.js"></script>
+<body>
+    <div id="container">
+        <h1>Asteroids Game</h1>
+        <canvas id="canvas" width='1200' height='600'>
+            Canvas not supported by your browser.
+        </canvas>
+    </div>
+    <script type="application/javascript" src="scripts/variables.js"></script>
+    <script type="application/javascript" src="scripts/run&repaint.js"></script>
+    <script type="application/javascript" src="scripts/init.js"></script>
+    <script type="application/javascript" src="scripts/events.js"></script>
+    <script type="application/javascript" src="scripts/Scene.js"></script>
+    <script type="application/javascript" src="scripts/Circle.js"></script>
+    <script type="application/javascript" src="scripts/scenes/welcome/welcomeScene.js"></script>
+    <script type="application/javascript" src="scripts/scenes/welcome/welcomePaint.js"></script>
+    <script type="application/javascript" src="scripts/scenes/welcome/welcomeAct.js"></script>
+    <script type="application/javascript" src="scripts/scenes/game/gameScene.js"></script>
+    <script type="application/javascript" src="scripts/scenes/game/gamePaint.js"></script>
+    <script type="application/javascript" src="scripts/scenes/game/gameAct.js"></script>
+</body>
 
-        <script type="application/javascript" src="scripts/Circle.js"></script>
-
-        
-        <script type="application/javascript" src="scripts/paint.js"></script>
-    </body>
 </html>

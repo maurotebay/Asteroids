@@ -1,10 +1,11 @@
-function Circle(x, y, radius, timer, speed, rotation) {
+function Circle(x, y, radius, isPlayer, timer, speed, rotation) {
     this.x = (x == undefined) ? 0 : x;
     this.y = (y == undefined) ? 0 : y;
     this.radius = (radius === undefined) ? 0 : radius;
     this.timer = (timer === undefined) ? 0 : timer;
     this.speed = (speed === undefined) ? 0 : speed;
     this.rotation = (rotation === undefined) ? 0 : rotation;
+    this.isPlayer = (isPlayer === undefined) ? false : isPlayer;
 }
 
 Circle.prototype = {
@@ -30,15 +31,17 @@ Circle.prototype = {
             this.y += Math.sin(angle) * speed;
         }
 
-        // Out Screen
-        if (this.x > canvas.width)
-            this.x = 0;
-        if (this.x < 0)
-            this.x = canvas.width;
-        if (this.y > canvas.height)
-            this.y = 0;
-        if (this.y < 0)
-            this.y = canvas.height;
+        if (this.isPlayer) {
+            // Out Screen
+            if (this.x > canvas.width)
+                this.x = 0;
+            if (this.x < 0)
+                this.x = canvas.width;
+            if (this.y > canvas.height)
+                this.y = 0;
+            if (this.y < 0)
+                this.y = canvas.height;
+        }
 
     },
 

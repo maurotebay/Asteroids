@@ -1,0 +1,1 @@
+welcomeScene = new Scene('welcome');

@@ -1,10 +1,12 @@
 function init() {
     canvas = document.getElementById('canvas');
-    ctx = canvas.getContext('2d');
-    canvas.width = 300;
-    canvas.height = 200;
 
-    player = new Circle(40, 160, 5);
+    ww=window.innerWidth;
+    wh=window.innerHeight;
+
+    ctx = canvas.getContext('2d');
+
+    player = new Circle(canvas.width/2, canvas.height/2, 7.5, true);
 
     run();
     repaint();

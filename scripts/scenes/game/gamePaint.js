@@ -1,4 +1,4 @@
-function paint(ctx) {
+gameScene.paint = function (ctx) {
     ctx.fillStyle = '#000';
     //Draw background image
     if (background.width)
@@ -12,8 +12,9 @@ function paint(ctx) {
     ctx.strokeStyle = '#0f0';
 
     //Draw propulsor animation
-    if (pressing[KEY_UP])
+    if (pressing[KEY_UP] || pressing[KEY_DOWN])
         player.drawImageArea(ctx, spritesheet, (~~(aTimer * 10) % 3) * 10, 0, 10, 10);
     else
         player.drawImageArea(ctx, spritesheet, 0, 0, 10, 10);
+
 }

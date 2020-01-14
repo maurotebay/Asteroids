@@ -1,9 +1,14 @@
 function run() {
     setTimeout(run, 50);
-    act(0.05);
+    if (scenes.length) {
+        scenes[currentScene].act(0.05);
+    }
+
 }
 
 function repaint() {
     requestAnimationFrame(repaint);
-    paint(ctx);
+    if (scenes.length) {
+        scenes[currentScene].paint(ctx);
+    }
 }

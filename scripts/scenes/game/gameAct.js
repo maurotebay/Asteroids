@@ -1,8 +1,8 @@
-function act(deltaTime) {
+gameScene.act = function(deltaTime) {
 
     //Accelerate player
     if (pressing[KEY_UP]) {
-        if (player.speed < 5)
+        if (player.speed < 7.5)
             player.speed++;
     }
     else {   //Decelerate player
@@ -12,8 +12,13 @@ function act(deltaTime) {
 
     //Decelerate player faster if down key pressed
     if (pressing[KEY_DOWN]) {
-        if (player.speed > 0) {
+        if (player.speed > -7.5) {
             player.speed--;
+        }
+    }
+    else{
+        if(player.speed<0){
+            player.speed++;
         }
     }
 
@@ -38,7 +43,7 @@ function act(deltaTime) {
 
     // New Shot
     if (lastPress == KEY_SPACE) {
-        var s = new Circle(player.x, player.y, 2.5, 15, player.speed + 15, player.rotation);
+        var s = new Circle(player.x, player.y, 3.75, false, 25, player.speed + 15, player.rotation);
         shots.push(s);
     }
 
