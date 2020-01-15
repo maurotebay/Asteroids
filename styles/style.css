@@ -3,6 +3,11 @@ body{
     height: 100vh;
 }
 
+h1{
+    text-align: center;
+    width: 10%;
+}
+
 #container{
     display: flex;
     background-color: #999;
@@ -11,9 +16,4 @@ body{
 #canvas{
     width: 100vw;
     height: 100vh;
-}
-
-h1{
-    text-align: center;
-    width: 10%;
 }

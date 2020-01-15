@@ -15,6 +15,7 @@ var pressing = [];          //Keys pressed array
 var player = null;
 var asteroids = [];
 var score = 0;
+var showControls = false;
 
 var radians = null;
 
@@ -35,3 +36,10 @@ var spritesheet = new Image();
 var background = new Image();           //Spriteshits and their respective sources
 spritesheet.src = 'assets/asteroids.png';
 background.src = 'assets/background.jpg';
+
+var arrowKeys = new Image();
+var spacebar = new Image();
+var enter = new Image();
+arrowKeys.src = 'assets/arrowKeys.png';
+spacebar.src = 'assets/spacebar.png';
+enter.src = 'assets/enter.png';
