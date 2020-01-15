@@ -5,8 +5,9 @@ welcomeScene.paint = function (ctx) {
     ctx.fillStyle = '#fff';
     ctx.font = '250% Arial';
     ctx.textAlign = 'center';
-    ctx.fillText('Welcome to the asteroids game', canvas.width / 2, canvas.height / 3);
-    ctx.fillText('Press Enter to start playing or space to see controls', canvas.width / 2, canvas.height * 2 / 3);
+    ctx.fillText('Welcome to the Asteroids game', canvas.width / 2, canvas.height / 3);
+    ctx.fillText('Press Enter to start playing or', canvas.width / 2, canvas.height * 2 / 3);
+    ctx.fillText('press Space to see controls.', canvas.width / 2, canvas.height * 3 / 4);
     ctx.textAlign = 'left';
 
     if (showControls) {

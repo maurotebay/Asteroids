@@ -31,6 +31,7 @@ var waveTimer = 40;
 
 var pause = false;
 var lives = 0;
+var isCrashed = false;
 
 var spritesheet = new Image();
 var background = new Image();           //Spriteshits and their respective sources

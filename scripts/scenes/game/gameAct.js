@@ -6,7 +6,7 @@ gameScene.act = function (deltaTime) {
 
         //Accelerate player
         if (pressing[KEY_UP]) {
-            if (player.speed < 7.5)
+            if (player.speed < 10)
                 player.speed++;
         }
         else {   //Decelerate player
@@ -16,7 +16,7 @@ gameScene.act = function (deltaTime) {
 
         //Decelerate player faster if down key pressed
         if (pressing[KEY_DOWN]) {
-            if (player.speed > -7.5) {
+            if (player.speed > -10) {
                 player.speed--;
             }
         }
@@ -46,9 +46,11 @@ gameScene.act = function (deltaTime) {
         player.move(radians, player.speed);
 
         // New Shot
-        if (lastPress == KEY_SPACE) {
-            var s = new Circle(player.x, player.y, 3.75, false, 25, player.speed + 15, player.rotation);
-            shots.push(s);
+        if (!isCrashed) {
+            if (lastPress == KEY_SPACE) {
+                var s = new Circle(player.x, player.y, canvas.width / 150, false, 30, player.speed + 15, player.rotation);
+                shots.push(s);
+            }
         }
 
         // Move Shots
@@ -67,7 +69,7 @@ gameScene.act = function (deltaTime) {
             waveTimer--;
         else if (asteroids.length < 1) {
             for (var i = 0, l = 2 + wave; i < l; i++) {    //Extra asteroids depending on wave number
-                var e = new Circle(random(canvas.width), 0, 40, false, 0, 2, random(180));
+                var e = new Circle(random(canvas.width), 0, canvas.width / 20, false, 0, 2, random(180));
                 asteroids.push(e);
             }
         }
@@ -81,30 +83,29 @@ gameScene.act = function (deltaTime) {
                 lives--;
                 player.timer = 60;
                 for (var j = 0; j < 8; j++) {
-                    var e = new Circle(player.x, player.y, canvas.width / 150, false, 40, 0, 45 * j);
+                    var e = new Circle(player.x, player.y, canvas.width / 120, false, 40, 0, 45 * j);
                     explosion.push(e);
                 }
             }
 
             // Asteroid bounces with canvas borders
             if (asteroids[i].x > canvas.width) {
-                asteroids[i].rotation = 540-asteroids[i].rotation;
+                asteroids[i].rotation = 540 - asteroids[i].rotation;
             }
             else if (asteroids[i].x < 0) {
-                asteroids[i].rotation = 540-asteroids[i].rotation;
+                asteroids[i].rotation = 540 - asteroids[i].rotation;
             }
             else if (asteroids[i].y > canvas.height) {
                 asteroids[i].rotation = 360 - asteroids[i].rotation;
             }
             else if (asteroids[i].y < -1) {
                 asteroids[i].rotation = 360 - asteroids[i].rotation;
-
             }
 
             // Collision asteroid-shot
             for (var j = 0, ll = shots.length; j < ll; j++) {
                 if (asteroids[i].distance(shots[j]) < 0) {
-                    if (asteroids[i].radius > 10) {
+                    if (asteroids[i].radius > canvas.width / 80) {
                         for (var k = 0; k < 3; k++) {
                             var e = new Circle(asteroids[i].x, asteroids[i].y, asteroids[i].radius / 2, false, 0, 2, shots[j].rotation + 120 * k);
                             asteroids.push(e);
@@ -136,9 +137,14 @@ gameScene.act = function (deltaTime) {
         // Damaged
         if (player.timer > 0) {
             player.timer--;
+            isCrashed = true;
             if (player.timer == 20) {
                 playerReset();
             }
+        }
+
+        if (player.timer === 0) {
+            isCrashed = false;
         }
     }
 
