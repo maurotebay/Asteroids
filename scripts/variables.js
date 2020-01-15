@@ -20,9 +20,16 @@ var radians = null;
 
 var aTimer = 0;             //Animation timer
 var shots = [];
+var explosion = [];
 
 var scenes = [];
 var currentScene = 0;
+
+var wave = 1;
+var waveTimer = 40;
+
+var pause = false;
+var lives = 0;
 
 var spritesheet = new Image();
 var background = new Image();           //Spriteshits and their respective sources

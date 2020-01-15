@@ -13,16 +13,33 @@ gameScene.paint = function (ctx) {
     ctx.strokeStyle = '#f00';
     for (var i = 0, l = shots.length; i < l; i++)
         shots[i].drawImageArea(ctx, spritesheet, 30, (~~(aTimer * 10) % 2) * 5, 5, 5);
-    ctx.strokeStyle = '#0f0';
-
-    //Draw propulsor animation
-    if (pressing[KEY_UP] || pressing[KEY_DOWN])
-        player.drawImageArea(ctx, spritesheet, (~~(aTimer * 10) % 3) * 10, 0, 10, 10);
-    else
-        player.drawImageArea(ctx, spritesheet, 0, 0, 10, 10);
 
     ctx.strokeStyle = '#00f';
     for (var i = 0, l = asteroids.length; i < l; i++)
         asteroids[i].drawImageArea(ctx, spritesheet, 0, 11, 40, 40);
 
+    if (player.timer < 21 && player.timer % 2 == 0) {
+        ctx.strokeStyle = '#0f0';
+
+        //Draw propulsor animation
+        if (pressing[KEY_UP] || pressing[KEY_DOWN])
+            player.drawImageArea(ctx, spritesheet, (~~(aTimer * 10) % 3) * 10, 0, 10, 10);
+        else
+            player.drawImageArea(ctx, spritesheet, 0, 0, 10, 10);
+
+        ctx.strokeStyle = '#ff0';
+
+    }
+
+    //Draw explosion
+    for (var i = 0, l = explosion.length; i < l; i++)
+        explosion[i].drawImageArea(ctx, spritesheet, 35, (~~(aTimer * 10) % 2) * 5, 5, 5);
+    ctx.fillStyle = '#fff';
+
+    //Draw health left
+    if (spritesheet.width)
+        for (var i = 0; i < lives; i++)
+            ctx.drawImage(spritesheet, 0, 0, 10, 10, canvas.width - 20 - 20 * i, 10, 10, 10);
+    else
+        ctx.fillText('Lives: ' + lives, canvas.width - 50, 20)
 }
