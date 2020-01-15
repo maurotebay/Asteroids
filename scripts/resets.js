@@ -13,4 +13,5 @@ function reset() {
     explosion.length = 0;
     score = 0;
     lives = 3;
+    wave = 1;
 }

@@ -31,15 +31,29 @@ gameScene.paint = function (ctx) {
 
     }
 
-    //Draw explosion
-    for (var i = 0, l = explosion.length; i < l; i++)
-        explosion[i].drawImageArea(ctx, spritesheet, 35, (~~(aTimer * 10) % 2) * 5, 5, 5);
-    ctx.fillStyle = '#fff';
-
     //Draw health left
     if (spritesheet.width)
         for (var i = 0; i < lives; i++)
             ctx.drawImage(spritesheet, 0, 0, 10, 10, canvas.width - 20 - 20 * i, 10, 10, 10);
     else
         ctx.fillText('Lives: ' + lives, canvas.width - 50, 20)
+
+    //Draw explosion
+    for (var i = 0, l = explosion.length; i < l; i++)
+        explosion[i].drawImageArea(ctx, spritesheet, 35, (~~(aTimer * 10) % 2) * 5, 5, 5);
+    ctx.fillStyle = '#fff';
+
+    if (pause) {
+        ctx.textAlign = 'center';
+        if (lives < 1)
+            ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2);
+        else
+            ctx.fillText('PAUSE', canvas.width / 2, canvas.height / 2);
+        ctx.textAlign = 'left';
+    }
+    else if (waveTimer > 0) {
+        ctx.textAlign = 'center';
+        ctx.fillText('WAVE ' + wave, canvas.width / 2, canvas.height / 2);
+        ctx.textAlign = 'left';
+    }
 }

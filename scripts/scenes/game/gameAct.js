@@ -66,7 +66,7 @@ gameScene.act = function (deltaTime) {
         if (waveTimer > 0)
             waveTimer--;
         else if (asteroids.length < 1) {
-            for (var i = 0, l = 2 + wave; i < l; i++) {
+            for (var i = 0, l = 2 + wave; i < l; i++) {    //Extra asteroids depending on wave number
                 var e = new Circle(random(canvas.width), 0, 40, false, 0, 2, random(180));
                 asteroids.push(e);
             }
@@ -86,13 +86,19 @@ gameScene.act = function (deltaTime) {
                 }
             }
 
-            // Asteroid off-screen
-            if (asteroids[i].x > canvas.width || asteroids[i].x < 0) {
-                asteroids[i].x = random(canvas.width);
-                asteroids[i].y = 0;
+            // Asteroid bounces with canvas borders
+            if (asteroids[i].x > canvas.width) {
+                asteroids[i].rotation = 540-asteroids[i].rotation;
+            }
+            else if (asteroids[i].x < 0) {
+                asteroids[i].rotation = 540-asteroids[i].rotation;
             }
             else if (asteroids[i].y > canvas.height) {
-                asteroids[i].y = 0;
+                asteroids[i].rotation = 360 - asteroids[i].rotation;
+            }
+            else if (asteroids[i].y < -1) {
+                asteroids[i].rotation = 360 - asteroids[i].rotation;
+
             }
 
             // Collision asteroid-shot
@@ -109,6 +115,10 @@ gameScene.act = function (deltaTime) {
                     l--;
                     shots.splice(j--, 1);
                     ll--;
+                    if (asteroids.length < 1) {
+                        waveTimer = 40;
+                        wave++;
+                    }
                 }
             }
         }
