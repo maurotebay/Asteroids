@@ -1,11 +1,6 @@
 function init() {
     canvas = document.getElementById('canvas');
-
-    width = document.documentElement.clientWidth;
-    height = document.documentElement.clientHeight;
-
-    canvas.width = width ;
-    canvas.height = height ;
+    container = document.getElementById('container');
 
     ctx = canvas.getContext('2d');
 

@@ -5,7 +5,8 @@ welcomeScene.act = function () {
     }
 
     if(lastPress === KEY_SPACE){
-        showControls = true;
+        showControls = !showControls;
+        lastPress = null;
     }
 
 }

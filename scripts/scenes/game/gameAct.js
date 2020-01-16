@@ -1,4 +1,10 @@
 gameScene.act = function (deltaTime) {
+
+    if (canvas.width > canvas.height)
+        player.radius = canvas.width / 150;
+    else
+        player.radius = canvas.height / 100;
+
     if (!pause) {
         // GameOver Reset
         if (lives < 1)
