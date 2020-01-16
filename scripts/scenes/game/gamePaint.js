@@ -32,11 +32,17 @@ gameScene.paint = function (ctx) {
     }
 
     //Draw health left
-    if (spritesheet.width)
+    if (spritesheet.width) {
+        ctx.fillStyle = '#fff';
+        ctx.fillText('Lives:', canvas.width - 100, 20);
         for (var i = 0; i < lives; i++)
             ctx.drawImage(spritesheet, 0, 0, 10, 10, canvas.width - 20 - 20 * i, 10, 10, 10);
+    }
     else
-        ctx.fillText('Lives: ' + lives, canvas.width - 50, 20)
+        ctx.fillText('Lives: ' + lives, canvas.width - 50, 20);
+
+    //Draw score
+    ctx.fillText('Score: ' + score, canvas.width / 2, 20);
 
     //Draw explosion
     for (var i = 0, l = explosion.length; i < l; i++)

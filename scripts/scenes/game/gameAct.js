@@ -74,7 +74,7 @@ gameScene.act = function (deltaTime) {
         if (waveTimer > 0)
             waveTimer--;
         else if (asteroids.length < 1) {
-            for (var i = 0, l = 2 + wave; i < l; i++) {    //Extra asteroids depending on wave number
+            for (var i = 0, l = basicAsteroidsNum + wave; i < l; i++) {    //Extra asteroids depending on wave number
                 var e = new Circle(random(canvas.width), 0, canvas.width / 20, false, 0, 2, random(180));
                 asteroids.push(e);
             }

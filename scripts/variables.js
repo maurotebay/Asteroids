@@ -28,6 +28,7 @@ var currentScene = 0;
 
 var wave = 1;
 var waveTimer = 40;
+var basicAsteroidsNum = 2;
 
 var pause = false;
 var lives = 0;
