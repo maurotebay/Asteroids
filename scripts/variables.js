@@ -8,6 +8,8 @@ var KEY_SPACE = 32;
 var KEY_ENTER = 13;
 
 var canvas = null, ctx = null;  //Canvas and context
+var canvas = document.getElementById('canvas');
+
 
 var lastPress = null;
 var pressing = [];          //Keys pressed array
@@ -16,6 +18,8 @@ var player = null;
 var asteroids = [];
 var score = 0;
 var showControls = false;
+var maxDistance = 0;
+var maxSpeed = 10;
 
 var radians = null;
 
@@ -29,6 +33,13 @@ var currentScene = 0;
 var wave = 1;
 var waveTimer = 40;
 var basicAsteroidsNum = 2;
+
+var touches = [];
+var isTouching = false;
+var x=0;
+var y=0;
+var btnShoot = null;
+var btnPause = null;
 
 var pause = false;
 var lives = 0;

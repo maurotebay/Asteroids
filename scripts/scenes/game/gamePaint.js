@@ -9,6 +9,7 @@ gameScene.paint = function (ctx) {
     }
     else
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+
     //Draw shots animation
     ctx.strokeStyle = '#f00';
     for (var i = 0, l = shots.length; i < l; i++)
@@ -31,6 +32,8 @@ gameScene.paint = function (ctx) {
 
     }
 
+    ctx.font = (canvas.width >= canvas.height) ? canvas.width / 75 + 'px' + ' Arial' : canvas.height / 50 + 'px' + ' Arial';
+
     //Draw health left
     if (spritesheet.width) {
         ctx.fillStyle = '#fff';
@@ -48,6 +51,14 @@ gameScene.paint = function (ctx) {
     for (var i = 0, l = explosion.length; i < l; i++)
         explosion[i].drawImageArea(ctx, spritesheet, 35, (~~(aTimer * 10) % 2) * 5, 5, 5);
     ctx.fillStyle = '#fff';
+
+    if (window.innerWidth < 800) {
+        ctx.strokeStyle = '#ccc';
+        btnShoot.stroke(ctx);
+        btnPause.stroke(ctx);
+        ctx.fillText('Shoot', btnShoot.x + btnShoot.width / 5, btnShoot.y + btnShoot.height / 2);
+        ctx.fillText('Pause', btnPause.x + btnPause.width / 10, btnPause.y + btnPause.height / 2);
+    }
 
     if (pause) {
         ctx.textAlign = 'center';
