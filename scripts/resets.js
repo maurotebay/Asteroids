@@ -6,7 +6,6 @@ function playerReset() {
 }
 
 function reset() {
-    playerReset();
     player.timer = 0;
     shots.length = 0;
     asteroids.length = 0;
@@ -14,4 +13,19 @@ function reset() {
     score = 0;
     lives = 3;
     wave = 1;
+    lastPress = null;
+    pressingReset();
+    playerReset();
+}
+
+function pressingReset() {
+    for (var i = 0; i < pressing.length; i++) {
+        pressing[i] = false;
+    }
+}
+
+function resetTouches(){
+    for(var i = 0; i < touches.length; i++){
+        touches[i] = null;
+    }
 }

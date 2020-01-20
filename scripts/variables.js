@@ -34,14 +34,21 @@ var wave = 1;
 var waveTimer = 40;
 var basicAsteroidsNum = 2;
 
+var highScores = [];
+var newScore = null;
+var name;
+var posHighScore = 10;
+
+
 var touches = [];
 var isTouching = false;
-var x=0;
-var y=0;
+var x = 0;
+var y = 0;
 var btnShoot = null;
 var btnPause = null;
 
 var pause = false;
+var pauseTimer = 0;
 var lives = 0;
 var isCrashed = false;
 

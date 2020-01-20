@@ -10,44 +10,6 @@ gameScene.act = function (deltaTime) {
     }
 
     if (!pause) {
-        // GameOver Reset
-        if (lives < 1)
-            reset();
-
-        //Accelerate player
-        if (pressing[KEY_UP]) {
-            if (player.speed < maxSpeed)
-                player.speed++;
-        }
-        else {   //Decelerate player
-            if (player.speed > 0)
-                player.speed--;
-        }
-
-        //Decelerate player faster if down key pressed
-        if (pressing[KEY_DOWN]) {
-            if (player.speed > -maxSpeed) {
-                player.speed--;
-            }
-        }
-        else {
-            if (player.speed < 0) {
-                player.speed++;
-            }
-        }
-
-        //Rotate player
-        if (pressing[KEY_RIGHT]) {
-            player.rotation += 10;
-            if (player.rotation >= 360)
-                player.rotation = 0;
-        }
-
-        if (pressing[KEY_LEFT]) {
-            player.rotation -= 10;
-            if (player.rotation <= -360)
-                player.rotation = 0;
-        }
 
         if (window.innerWidth < 800) {
             if (touches[0] !== null) {
@@ -73,6 +35,43 @@ gameScene.act = function (deltaTime) {
             else if (player.speed > 0) {
                 isTouching = false;
                 player.speed--;
+            }
+        }
+
+        else {
+            //Accelerate player
+            if (pressing[KEY_UP]) {
+                if (player.speed < maxSpeed)
+                    player.speed++;
+            }
+            else {   //Decelerate player
+                if (player.speed > 0)
+                    player.speed--;
+            }
+
+            //Decelerate player faster if down key pressed
+            if (pressing[KEY_DOWN]) {
+                if (player.speed > -maxSpeed) {
+                    player.speed--;
+                }
+            }
+            else {
+                if (player.speed < 0) {
+                    player.speed++;
+                }
+            }
+
+            //Rotate player
+            if (pressing[KEY_RIGHT]) {
+                player.rotation += 10;
+                if (player.rotation >= 360)
+                    player.rotation = 0;
+            }
+
+            if (pressing[KEY_LEFT]) {
+                player.rotation -= 10;
+                if (player.rotation <= -360)
+                    player.rotation = 0;
             }
         }
 
@@ -189,7 +188,8 @@ gameScene.act = function (deltaTime) {
 
     // GameOver
     if (lives < 1) {
-        pause = true;
+        resetTouches();
+        loadScene('highScores');
     }
 
     btnShoot.x = canvas.width / 20;
@@ -207,8 +207,13 @@ gameScene.act = function (deltaTime) {
     if (aTimer > 3600)
         aTimer -= 3600;
 
-    if (lastPress == KEY_ENTER || btnPause.touch())
+    if (pauseTimer > 0)
+        pauseTimer--;
+
+    if ((lastPress == KEY_ENTER || btnPause.touch()) && pauseTimer < 1) {
         pause = !pause;
+        pauseTimer = 10;
+    }
 
     lastPress = null;
 

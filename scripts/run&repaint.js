@@ -10,7 +10,6 @@ function run() {
     if (scenes.length) {
         scenes[currentScene].act(0.05);
     }
-
 }
 
 function repaint() {

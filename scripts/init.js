@@ -3,11 +3,15 @@ function init() {
 
     ctx = canvas.getContext('2d');
 
+    scores = localStorage.getItem("highScores");
+    if (scores)
+        highScores = JSON.parse(scores);
+
     player = new Circle(canvas.width / 2, canvas.height / 2, canvas.width / 100, true);
 
     destination = new Circle(x, y, 0.5);
-    btnShoot = new Button(170, 270, 20, 20);
-    btnPause = new Button(90, 0, 20, 20);
+    btnShoot = new Button(canvas.width / 20, canvas.height * 4 / 5, canvas.width / 10, canvas.height / 10);
+    btnPause = new Button(canvas.width / 20, canvas.height / 20, canvas.height / 10, canvas.height / 10);
 
     run();
     repaint();
