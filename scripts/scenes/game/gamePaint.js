@@ -32,7 +32,7 @@ gameScene.paint = function (ctx) {
 
     }
 
-    ctx.font = (canvas.width >= canvas.height) ? canvas.width / 75 + 'px' + ' Arial' : canvas.height / 50 + 'px' + ' Arial';
+    ctx.font = (canvas.width >= canvas.height) ? canvas.width / 55 + 'px' + ' Arial' : canvas.height / 50 + 'px' + ' Arial';
 
     //Draw health left
     if (spritesheet.width) {
@@ -56,8 +56,8 @@ gameScene.paint = function (ctx) {
         ctx.strokeStyle = '#ccc';
         btnShoot.stroke(ctx);
         btnPause.stroke(ctx);
-        ctx.fillText('Shoot', btnShoot.x + btnShoot.width / 5, btnShoot.y + btnShoot.height / 2);
-        ctx.fillText('Pause', btnPause.x + btnPause.width / 10, btnPause.y + btnPause.height / 2);
+        ctx.fillText('Shoot', btnShoot.x + btnShoot.width / 5, btnShoot.y + btnShoot.height / 2, btnShoot.width);
+        ctx.fillText('Pause', btnPause.x + btnPause.width / 10, btnPause.y + btnPause.height / 2, btnPause.width);
     }
 
     if (pause) {
