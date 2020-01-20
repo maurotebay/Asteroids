@@ -1,7 +1,7 @@
 highScoresScene = new Scene('highScores');
 
 highScoresScene.load = function () {
-    name = prompt('Name: ');
+    name = prompt('Enter your name: ');
 
     newScore = new Score(score, name);
 
