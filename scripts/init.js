@@ -4,8 +4,10 @@ function init() {
     ctx = canvas.getContext('2d');
 
     scores = localStorage.getItem("highScores");
-    if (scores)
+    if (scores != null)
         highScores = JSON.parse(scores);
+    else
+        highScores = [];
 
     player = new Circle(canvas.width / 2, canvas.height / 2, canvas.width / 100, true);
 

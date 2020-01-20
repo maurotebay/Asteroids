@@ -2,6 +2,9 @@ function addHighScore(newScore) {
 
     posHighScore = 0;
 
+    if(highScores == null)
+        highScores = [];
+        
     if (highScores.length < 1) {
         highScores.push(newScore);
     }
