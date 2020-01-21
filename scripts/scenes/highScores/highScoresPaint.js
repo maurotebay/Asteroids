@@ -1,5 +1,5 @@
 highScoresScene.paint = function (ctx) {
-
+    
     ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -17,20 +17,24 @@ highScoresScene.paint = function (ctx) {
         
         if (i === posHighScore) {
             ctx.fillStyle = '#ff0';
-            ctx.fillText('->   ' + highScores[i].score, canvas.width * 2 / 3, canvas.height * 2 / 7 + (i + 1) * 20);
+            ctx.fillText('->   ' + highScores[i].score, canvas.width * 2 / 3, canvas.height * 2 / 7 + (i + 1) * linea);
         }
         else {
             ctx.fillStyle = '#fff';
-            ctx.fillText(highScores[i].score, canvas.width * 2 / 3, canvas.height * 2 / 7 + (i + 1) * 20);
+            ctx.fillText(highScores[i].score, canvas.width * 2 / 3, canvas.height * 2 / 7 + (i + 1) * linea);
         }
         
-        ctx.fillText(highScores[i].name, canvas.width / 3, canvas.height * 2 / 7 + (i + 1) * 20);
+        ctx.fillText(highScores[i].name, canvas.width / 3, canvas.height * 2 / 7 + (i + 1) * linea);
     }
 
     ctx.textAlign = 'center';
-    if (window.innerWidth > 800)
+    if (window.innerWidth > 800){
         ctx.fillText('Press enter to play again', canvas.width / 2, canvas.height * 19 / 20);
-    else
-        ctx.fillText('Touch the screen to play again', canvas.width / 2, canvas.height * 19 / 20)
+        linea = 25;
+    }
+    else{
+        ctx.fillText('Touch the screen to play again', canvas.width / 2, canvas.height * 19 / 20);
+        linea = 20;
+    }
 
 };

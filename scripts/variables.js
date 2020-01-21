@@ -9,6 +9,9 @@ var KEY_ENTER = 13;
 
 var canvas = null, ctx = null;  //Canvas and context
 var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+
+var linea = 20;
 
 
 var lastPress = null;

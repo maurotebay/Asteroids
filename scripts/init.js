@@ -1,7 +1,4 @@
 function init() {
-    canvas = document.getElementById('canvas');
-
-    ctx = canvas.getContext('2d');
 
     scores = localStorage.getItem("highScores");
     if (scores != null)
