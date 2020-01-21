@@ -37,7 +37,9 @@ gameScene.paint = function (ctx) {
     //Draw health left
     if (spritesheet.width) {
         ctx.fillStyle = '#fff';
-        ctx.fillText('Lives:', canvas.width - 100, 20);
+        ctx.textAlign = 'right';
+        ctx.fillText('Lives:', canvas.width - 70, 20);
+        ctx.textAlign = 'left';
         for (var i = 0; i < lives; i++)
             ctx.drawImage(spritesheet, 0, 0, 10, 10, canvas.width - 20 - 20 * i, 10, 10, 10);
     }
