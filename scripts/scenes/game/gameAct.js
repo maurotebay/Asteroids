@@ -199,8 +199,8 @@ gameScene.act = function (deltaTime) {
 
     btnPause.x = canvas.width / 20;
     btnPause.y = canvas.height / 20;
-    btnPause.width = canvas.height / 10;
-    btnPause.height = canvas.height / 10;
+    btnPause.width = canvas.height / 8;
+    btnPause.height = canvas.height / 8;
 
 
     aTimer += deltaTime;
