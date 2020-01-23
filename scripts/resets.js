@@ -1,11 +1,11 @@
-function playerReset() {
+var playerReset = () => {
     player.x = canvas.width / 2;
     player.y = canvas.height / 2;
     player.rotation = 0;
     player.speed = 0;
 }
 
-function reset() {
+var reset = () => {
     player.timer = 0;
     shots.length = 0;
     asteroids.length = 0;
@@ -18,14 +18,14 @@ function reset() {
     playerReset();
 }
 
-function pressingReset() {
+var pressingReset = () => {
     for (var i = 0; i < pressing.length; i++) {
         pressing[i] = false;
     }
 }
 
-function resetTouches(){
-    for(var i = 0; i < touches.length; i++){
+var resetTouches = () => {
+    for (var i = 0; i < touches.length; i++) {
         touches[i] = null;
     }
 }

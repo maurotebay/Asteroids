@@ -1,24 +1,54 @@
-function Button(x, y, width, height) {
-    this.x = (x == null) ? 0 : x;
-    this.y = (y == null) ? 0 : y;
-    this.width = (width == null) ? 0 : width;
-    this.height = (height == null) ? this.width : height;
-}
+class Button {
+    constructor(x = 0, y = 0, width = 0, height = this.width) {
+        this._x = x;
+        this._y = y;
+        this._width = width;
+        this._height = height;
+    }
 
-Button.prototype.touch = function () {
-    for (var i = 0, l = touches.length; i < l; i++) {
-        if (touches[i] != null) {
-            if (this.x < touches[i].x &&
-                this.x + this.width > touches[i].x &&
-                this.y < touches[i].y &&
-                this.y + this.height > touches[i].y) {
-                return true;
+    get x() {
+        return this._x;
+    }
+    set x(newX) {
+        this._x = newX;
+    }
+
+    get y() {
+        return this._y;
+    }
+    set y(newY) {
+        this._y = newY;
+    }
+
+    get width() {
+        return this._width;
+    }
+    set width(newWidt) {
+        this._width = newWidt;
+    }
+
+    get height() {
+        return this._height;
+    }
+    set height(newHeight) {
+        this._height = newHeight;
+    }
+
+    touch() {
+        for (let i = 0, l = touches.length; i < l; i++) {
+            if (touches[i] != null) {
+                if (this.x < touches[i].x &&
+                    this.x + this.width > touches[i].x &&
+                    this.y < touches[i].y &&
+                    this.y + this.height > touches[i].y) {
+                    return true;
+                }
             }
         }
+        return false;
     }
-    return false;
-}
 
-Button.prototype.stroke = function (ctx) {
-    ctx.strokeRect(this.x, this.y, this.width, this.height);
+    stroke(ctx) {
+        ctx.strokeRect(this.x, this.y, this.width, this.height);
+    }
 }

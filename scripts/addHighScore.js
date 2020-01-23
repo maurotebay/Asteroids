@@ -1,4 +1,4 @@
-function addHighScore(newScore) {
+var addHighScore = (newScore) => {
 
     posHighScore = 0;
 

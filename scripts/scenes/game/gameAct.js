@@ -1,10 +1,9 @@
-gameScene.act = function (deltaTime) {
+gameScene.act = (deltaTime) => {
 
     if (canvas.width > canvas.height) {
         player.radius = canvas.width / 80;
         maxDistance = canvas.width;
-    }
-    else {
+    } else {
         player.radius = canvas.height / 30;
         maxDistance = canvas.height;
     }
@@ -18,33 +17,28 @@ gameScene.act = function (deltaTime) {
                 isTouching = true;
                 player.rotation = player.getAngle(destination) * 180 / Math.PI;
 
-                var distance = player.distance(destination);
-                var distancePercetage = (distance * 100 / maxDistance);
+                let distance = player.distance(destination);
+                let distancePercetage = (distance * 100 / maxDistance);
 
                 if (distance > 0) {
                     if (player.speed < 10) {
                         if (distancePercetage > 1) {
                             player.speed = 10;
-                        }
-                        else {
+                        } else {
                             player.speed = distancePercetage * 10;
                         }
                     }
                 }
-            }
-            else if (player.speed > 0) {
+            } else if (player.speed > 0) {
                 isTouching = false;
                 player.speed--;
             }
-        }
-
-        else {
+        } else {
             //Accelerate player
             if (pressing[KEY_UP]) {
                 if (player.speed < maxSpeed)
                     player.speed++;
-            }
-            else {   //Decelerate player
+            } else { //Decelerate player
                 if (player.speed > 0)
                     player.speed--;
             }
@@ -54,8 +48,7 @@ gameScene.act = function (deltaTime) {
                 if (player.speed > -maxSpeed) {
                     player.speed--;
                 }
-            }
-            else {
+            } else {
                 if (player.speed < 0) {
                     player.speed++;
                 }
@@ -86,13 +79,13 @@ gameScene.act = function (deltaTime) {
         // New Shot
         if (!isCrashed) {
             if (lastPress == KEY_SPACE || btnShoot.touch()) {
-                var s = new Circle(player.x, player.y, maxDistance / 100, false, 30, player.speed + 15, player.rotation);
+                let s = new Circle(player.x, player.y, maxDistance / 100, false, 30, player.speed + 15, player.rotation);
                 shots.push(s);
             }
         }
 
         // Move Shots
-        for (var i = 0, l = shots.length; i < l; i++) {
+        for (let i = 0, l = shots.length; i < l; i++) {
             shots[i].timer--;
             if (shots[i].timer < 0) {
                 shots.splice(i--, 1);
@@ -106,22 +99,22 @@ gameScene.act = function (deltaTime) {
         if (waveTimer > 0)
             waveTimer--;
         else if (asteroids.length < 1) {
-            for (var i = 0, l = basicAsteroidsNum + wave; i < l; i++) {    //Extra asteroids depending on wave number
-                var e = new Circle(random(canvas.width), 0, maxDistance / 15, false, 0, 2, random(180));
+            for (let i = 0, l = basicAsteroidsNum + wave; i < l; i++) { //Extra asteroids depending on wave number
+                let e = new Circle(random(canvas.width), 0, maxDistance / 15, false, 0, 2, random(180));
                 asteroids.push(e);
             }
         }
 
         // Move asteroids
-        for (var i = 0, l = asteroids.length; i < l; i++) {
+        for (let i = 0, l = asteroids.length; i < l; i++) {
             asteroids[i].move(asteroids[i].rotation * Math.PI / 180, asteroids[i].speed);
 
             // Collision Asteroid-Player
             if (player.timer < 1 && asteroids[i].distance(player) < 0) {
                 lives--;
                 player.timer = 60;
-                for (var j = 0; j < 8; j++) {
-                    var e = new Circle(player.x, player.y, maxDistance / 100, false, 40, 0, 45 * j);
+                for (let j = 0; j < 8; j++) {
+                    let e = new Circle(player.x, player.y, maxDistance / 100, false, 40, 0, 45 * j);
                     explosion.push(e);
                 }
             }
@@ -129,19 +122,16 @@ gameScene.act = function (deltaTime) {
             // Asteroid bounces with canvas borders
             if (asteroids[i].x > canvas.width) {
                 asteroids[i].rotation = 540 - asteroids[i].rotation;
-            }
-            else if (asteroids[i].x < 0) {
+            } else if (asteroids[i].x < 0) {
                 asteroids[i].rotation = 540 - asteroids[i].rotation;
-            }
-            else if (asteroids[i].y > canvas.height) {
+            } else if (asteroids[i].y > canvas.height) {
                 asteroids[i].rotation = 360 - asteroids[i].rotation;
-            }
-            else if (asteroids[i].y < -1) {
+            } else if (asteroids[i].y < -1) {
                 asteroids[i].rotation = 360 - asteroids[i].rotation;
             }
 
             // Collision asteroid-shot
-            for (var j = 0, ll = shots.length; j < ll; j++) {
+            for (let j = 0, ll = shots.length; j < ll; j++) {
                 if (asteroids[i].distance(shots[j]) < 0) {
                     if (asteroids[i].radius > maxDistance / 100) {
                         for (var k = 0; k < 3; k++) {
@@ -163,7 +153,7 @@ gameScene.act = function (deltaTime) {
         }
 
         // Move Explosion
-        for (var i = 0, l = explosion.length; i < l; i++) {
+        for (let i = 0, l = explosion.length; i < l; i++) {
             explosion[i].move((explosion[i].rotation - 90) * Math.PI / 180, 1);
             explosion[i].timer--;
             if (explosion[i].timer < 1) {

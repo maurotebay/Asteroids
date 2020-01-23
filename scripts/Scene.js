@@ -1,17 +1,16 @@
-function Scene(name) {
-    this.name = (name === undefined) ? '' : name;
-    scenes.push(this);
+class Scene {
+    constructor(name = '') {
+        this.name = name;
+        scenes.push(this);
+    }
+
+    load() {}
+    paint(ctx) {}
+    act(deltaTime) {}
 }
 
-Scene.prototype = {
-    constructor: Scene,
-    load: function () { },
-    paint: function (ctx) { },
-    act: function (deltaTime) { }
-}
-
-function loadScene(name) {
-    for (var i = 0; i < scenes.length; i++) {
+var loadScene = (name) => {
+    for (let i = 0; i < scenes.length; i++) {
         if (scenes[i].name == name)
             currentScene = i;
     }

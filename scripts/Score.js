@@ -1,4 +1,6 @@
-function Score(score, name) {
-    this.score = (score === undefined) ? 0 : score;
-    this.name = (name == "null" || name == '') ? 'Nobody' : name;
+class Score {
+    constructor(score = 0, name) {
+        this.score = score;
+        this.name = (name == "null" || name == '') ? 'Nobody' : name;
+    }
 }

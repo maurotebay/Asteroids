@@ -1,3 +1,1 @@
-function random(max) {
-    return ~~(Math.random() * max);
-}
+var random = (max) => ~~(Math.random() * max);

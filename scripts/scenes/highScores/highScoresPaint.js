@@ -1,4 +1,4 @@
-highScoresScene.paint = function (ctx) {
+highScoresScene.paint = (ctx) => {
     
     ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -13,7 +13,7 @@ highScoresScene.paint = function (ctx) {
     ctx.fillText('Name:', canvas.width / 3, canvas.height * 2 / 7);
     ctx.fillText('Score:', canvas.width * 2 / 3, canvas.height * 2 / 7);
 
-    for (var i = 0, l = highScores.length; i < l; i += 1) {
+    for (let i = 0, l = highScores.length; i < l; i += 1) {
         
         if (i === posHighScore) {
             ctx.fillStyle = '#ff0';

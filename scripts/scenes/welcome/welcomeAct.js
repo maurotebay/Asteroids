@@ -1,4 +1,4 @@
-welcomeScene.act = function () {
+welcomeScene.act = () => {
     if (lastPress === KEY_ENTER) {
         loadScene('game');
         lastPress = null;
@@ -9,7 +9,7 @@ welcomeScene.act = function () {
         lastPress = null;
     }
 
-    for (var i = 0; i < touches.length; i++) {
+    for (let i = 0; i < touches.length; i++) {
         if (touches[i].x < canvas.width && touches[i].y < canvas.height){
             touches[i] = null;
             loadScene('game');
